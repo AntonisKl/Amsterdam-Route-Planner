@@ -1,6 +1,10 @@
-from flask import Flask, jsonify, request, render_template
+from flask import Flask, jsonify, request, render_template, flash
+
+from config import flask_secret_key
 # from joblib import dump, load
-from map import *
+from map import accessibility_gdf, traffic_gdf, walkability_gdf, current_crowd_prediction_gdf, create_map_with_features
+import folium
+from route_planning import find_route
 
 # import speech_recognition as sr
 # import pyaudio
@@ -24,18 +28,35 @@ from map import *
 
 
 app = Flask(__name__)
+app.config['SECRET_KEY'] = flask_secret_key
 
 
 @app.route('/', methods=['POST', 'GET'])
 def result():
-    # if request.method == 'POST':
-    #    result = request.form
-    # return render_template("result.html",result = result)
-    return render_template('index.html', map=m._repr_html_())
+    if request.method == 'POST':
+        destination = request.form['destination']
+
+        if not destination:
+            flash('Destination is required.')
+        else:
+            folium_map = create_map_with_features(False, False, False, False)
+            try:
+                find_route(folium_map, destination, True, True, True, True, accessibility_gdf, traffic_gdf,
+                           walkability_gdf,
+                           current_crowd_prediction_gdf)
+            except KeyError:
+                flash('Error while trying to convert destination to coordinates. Please try a more specific one.')
+    else:
+        folium_map = create_map_with_features()
+
+    folium.LayerControl(collapsed=False).add_to(folium_map)
+
+    return render_template('index.html', map=folium_map._repr_html_())
 
     # return render_template('index.html')
 
-# 
+
+#
 # @app.route('/')
 # def hello():
 #     # return "hello"
