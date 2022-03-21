@@ -1,2 +1,0 @@
-ors_api_key = '5b3ce3597851110001cf6248aec4a63d15b347b0a8da0d9a7725d391'
-flask_secret_key = 'e5657dace27ddaf792c0b9655fb158a1ea7a6f64e3c412d0'
