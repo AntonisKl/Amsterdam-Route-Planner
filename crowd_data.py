@@ -59,6 +59,7 @@ current_crowd_prediction_gdf['people_count_normalized'] = (people_counts - peopl
 current_crowd_prediction_gdf['crowd_level'] = current_crowd_prediction_gdf['people_count_normalized'].apply(
     calculate_crowd_level)
 
-current_crowd_prediction_gdf['points_with_radius'] = current_crowd_prediction_gdf['geometry'].apply(
+current_crowd_prediction_gdf['geometry'] = current_crowd_prediction_gdf['geometry'].apply(
     lambda point: shape(point).buffer(20))
-current_crowd_prediction_gdf.set_geometry('points_with_radius', inplace=True)
+# current_crowd_prediction_gdf.set_geometry('points_with_radius', inplace=True)
+current_crowd_prediction_gdf.crs = 'urn:ogc:def:crs:EPSG::28992'
