@@ -3,7 +3,10 @@
 <!-- <script type="text/javascript" src="static/main.js"/> -->
 <!-- <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"/> -->
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"/>
+<!-- {{ map | safe }} -->
 <script src="/static/main.js" defer></script>
+
+
 
 
 <html>
@@ -13,6 +16,8 @@
   id="search-form">
   <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"/>
   <input name="q" type="text" autocomplete="off" autofocus>
+
+
       <!-- <button type="button"><i class="fa fa-microphone" style="font-size:36px;color:red"></i></button> -->
           <!-- <i class="fa fa-microphone" style="font-size:36px;color:red"></i> -->
         </form>
@@ -21,3 +26,4 @@
 
     </body>
     </html>
+    {{ map | safe }}

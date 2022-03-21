@@ -36,4 +36,4 @@ folium.GeoJson(walkability_gdf, name="Business",
 folium.LayerControl(collapsed=False).add_to(m)
 folium.LayerControl().add_to(m)
 
-# m.save("mymap.html")
+m.save("mymap.html")

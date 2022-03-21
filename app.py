@@ -26,19 +26,21 @@ from map import *
 app = Flask(__name__)
 
 
-@app.route('/result', methods=['POST', 'GET'])
+@app.route('/', methods=['POST', 'GET'])
 def result():
     # if request.method == 'POST':
     #    result = request.form
     # return render_template("result.html",result = result)
-    return render_template('index.html')
+    return render_template('index.html', map=m._repr_html_())
 
+    # return render_template('index.html')
 
-@app.route('/')
-def hello():
-    # return "hello"
-    # d = app.data['traffic_gdf'] = traffic_gdf
-    return m._repr_html_()
+# 
+# @app.route('/')
+# def hello():
+#     # return "hello"
+#     # d = app.data['traffic_gdf'] = traffic_gdf
+#     return m._repr_html_()
 
 
 # The above function returns the HTML code to be displayed on the page
