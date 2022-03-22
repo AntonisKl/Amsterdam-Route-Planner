@@ -3,22 +3,37 @@
 <html lang="en">
 <head>
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"/>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
     <script src="/static/main.js" defer></script>
+    <script src="/static/button.js" defer></script>
+    <!-- <script src="/static/main.css" defer></script> -->
+
+    <!-- <link rel="stylesheet" type="=text/css" href="{{ url_for('static', filename='style.css') }}"> -->
+
     <title>Route planner</title>
 </head>
 <body>
+  <!-- <h2>Hey there {{ name }}</h2> -->
 <div class="container">
-    <form method="POST" id="search-form">
+  <form method="POST" id="search-form">
+  <input id="destination" name="destination" type="text" placeholder="Enter Destination"  autocomplete="off" autofocus
+         value="{{ request.form['destination'] }}">
+  <input type="button" style="font-size:30px;color:black;text-align: left;" onclick="myFunction()" value="Submit">
+  </form>
+
+
+  <p class="info"></p>
+    <!-- <form method="POST" id="search-form">
         <label for="destination">Destination</label>
         <input id="destination" name="destination" type="text" autocomplete="off" autofocus
                value="{{ request.form['destination'] }}">
         <button type="submit">Submit</button>
-    </form>
+    </form> -->
     {% for message in get_flashed_messages() %}
     <div class="alert">{{ message }}</div>
     {% endfor %}
 </div>
+
 {{ map | safe }}
 </body>
 </html>
-

@@ -1,60 +1,28 @@
-# import speech_recognition as sr
-# import pyaudio
+# import geocoder
+# g = geocoder.ip('me')
+# print(g.latlng)
+
+# import requests
 #
-# def speech():
+# freegeoip = "http://freegeoip.net/json"
+# geo_r = requests.get(freegeoip)
+# geo_json = geo_r.json()
 #
-#     r = sr.Recognizer()
-#     # text = ""
-#     with sr.Microphone() as source:
-#         r.adjust_for_ambient_noise(source)
-#         print("Listening......")
-#         audio = r.listen(source)
+# user_postition = [geo_json["latitude"], geo_json["longitude"]]
 #
-#         try:
-#             print("Recognizing...")
-#             query = r.recognize_google(audio, language='nl-NL')
-#             # print(f"USER: {query}\n")
-#
-#         except Exception:
-#             print("Did not catch that")
-#     return query
-#
-#
-#
-# # r = sr.Recognizer()
-# #     # text = ""
-# # with sr.Microphone() as source:
-# #     r.adjust_for_ambient_noise(source)
-# #     print("Listening......")
-# #     audio = r.listen(source)
-# #
-# #     try:
-# #         print("Recognizing...")
-# #         query = r.recognize_google(audio, language='nl-NL')
-# #         print(f"USER: {query}\n")
-# #
-# #     except Exception:
-# #         print("Did not catch that")
-#
-#
-#     # r = sr.Recognizer()
-#     # text = ""
-#     # with sr.Microphone() as source:
-#     #     r.adjust_for_ambient_noise(source)
-#     #
-#     #     print("Please say something")
-#     #
-#     #     audio = r.listen(source)
-#     #
-#     #     print("Recognizing Now .... ")
-#     #
-#     #
-#     #     # recognize speech using google
-#     #
-#     #     try:
-#     #         text =  r.recognize_google(audio)
-#     #
-#     #
-#     #     except Exception as e:
-#     #         print("Error :  " + str(e))
-#     # return text
+# print(user_postition)
+
+from geopy.geocoders import Nominatim
+
+# calling the Nominatim tool
+loc = Nominatim(user_agent="GetLoc")
+
+# entering the location name
+getLoc = loc.geocode("Amsterdam")
+
+# printing address
+print(getLoc.address)
+
+# printing latitude and longitude
+print("Latitude = ", getLoc.latitude, "\n")
+print("Longitude = ", getLoc.longitude)

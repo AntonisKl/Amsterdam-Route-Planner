@@ -3,6 +3,10 @@ const searchForm = document.querySelector("#search-form");
 const searchFormInput = searchForm.querySelector("input"); // <=> document.querySelector("#search-form input");
 const info = document.querySelector(".info");
 
+function myFunction() {
+  document.getElementById("search-form").submit();
+}
+
 // The speech recognition interface lives on the browser’s window object
 const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition; // if none exists -> undefined
 
@@ -16,6 +20,10 @@ if(SpeechRecognition) {
   // searchForm.insertAdjacentHTML("beforeend", '<button type="button"><i class="fas fa-microphone"></i></button>');
 
   searchForm.insertAdjacentHTML("beforeend", '<button type="button"><i class="fa fa-microphone" style="font-size:30px;color:red"></i></button>');
+
+  // searchForm.insertAdjacentHTML("afterend", '<button type="submit">Submit</button>');
+
+
   searchFormInput.style.paddingRight = "50px";
 
   const micBtn = searchForm.querySelector("button");
