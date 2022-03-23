@@ -16,6 +16,7 @@
 }
 #search-form {
   width: 30%;
+  /* top:55%; */
   margin: 0 auto;
   position: relative;
 }
@@ -47,10 +48,45 @@
 }
 
 @media (max-width: 1200px) {
-  #search-form { width: 50%; }
+  #search-form { width: 50%;
+ }
 }
+
+
 @media (max-width: 768px) {
   .container { padding: 30px 35px; }
   #search-form { width: 100%; }
   .info { font-size: 0.5rem; }
 }
+
+@media (max-width: 480px) {
+  .container {
+    max-width: 220%;
+
+  }
+}
+
+
+.btn-toolbar{
+position: absolute;
+top:15%;
+left:8%;
+/* width:100px;
+height:100px; */
+z-index: 2;
+/* background: orange; */
+}
+
+/* @media (max-width: 480px) {
+  .container{
+    display: inline-block;
+    width: 100%;
+    max-width: 200%;
+  }
+} */
+
+/* input#btn-check1{
+    background: #ccc url('traffic.png') no-repeat top left;
+    padding-left: 16px;
+    height: 16px;
+} */

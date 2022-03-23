@@ -2,24 +2,41 @@
 
 <html lang="en">
 <head>
-    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"/>
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
-    <script src="/static/main.js" defer></script>
-    <script src="/static/button.js" defer></script>
-    <!-- <script src="/static/main.css" defer></script> -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 
-    <!-- <link rel="stylesheet" type="=text/css" href="{{ url_for('static', filename='style.css') }}"> -->
+  <script src="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.6.1/js/bootstrap4-toggle.min.js"></script>
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"/>
+
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+  <link href="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.6.1/css/bootstrap4-toggle.min.css" rel="stylesheet">
+  <script src="/static/main.js" defer></script>
+  <script src="/static/button.js" defer></script>
 
     <title>Route planner</title>
 </head>
 <body>
-  <!-- <h2>Hey there {{ name }}</h2> -->
 <div class="container">
   <form method="POST" id="search-form">
   <input id="destination" name="destination" type="text" placeholder="Enter Destination"  autocomplete="off" autofocus
          value="{{ request.form['destination'] }}">
-  <input type="button" style="font-size:30px;color:black;text-align: left;" onclick="myFunction()" value="Submit">
+  <input type="button" class="btn btn-primary btn-lg" style="font-size:15px" text-align: left; onclick="myFunction()" value="Submit">
   </form>
+
+  <div class="btn-toolbar" role="group" aria-label="Basic checkbox toggle button group">
+    
+  <input type="checkbox" class="btn-check" id="btncheck1" autocomplete="off">
+  <label class="btn btn-outline-dark" for="btncheck1">Avoid Traffic</label>
+
+  <input type="checkbox" class="btn-check" id="btncheck2" autocomplete="off">
+  <label class="btn btn-outline-dark" for="btncheck2">Avoid Crowds</label>
+
+  <input type="checkbox" class="btn-check" id="btncheck3" autocomplete="off">
+  <label class="btn btn-outline-dark" for="btncheck3">Wheelchair Access</label>
+</div>
+
+
+
 
 
   <p class="info"></p>
