@@ -39,13 +39,13 @@ mean_crowd_same_weekday_per_sensor_gdf = crowd_last_month_same_hour_same_weekday
 
 def calculate_crowd_level(people_count_normalized):
     if people_count_normalized < .25:
-        return 3
-    elif people_count_normalized < .5:
-        return 2
-    elif people_count_normalized < .75:
-        return 1
-    else:
         return 0
+    elif people_count_normalized < .5:
+        return 1
+    elif people_count_normalized < .75:
+        return 2
+    else:
+        return 3
 
 
 current_crowd_prediction_gdf = crowd_last_month_same_hour_same_weekday_gdf.drop_duplicates(subset=['sensor']).drop(
