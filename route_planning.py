@@ -27,16 +27,34 @@ def add_overlapping_streets(overlapping_streets, streets_series, route_buffer, s
             overlapping_streets.append(street)
 
 
-def find_route(folium_map, destination, avoid_low_accessibility, avoid_traffic, avoid_low_walkability, avoid_high_crowds,
-               accessibility_gdf, traffic_gdf, walkability_gdf, crowd_gdf):
+def get_text_instructions(route):
+    instructions = []
+    for feature in route['features']:
+        for segment in feature['properties']['segments']:
+            for step in segment['steps']:
+                instructions.append(step['instruction'])
 
+    return instructions
+
+
+def find_route(folium_map, destination, avoid_low_accessibility, avoid_traffic, avoid_low_walkability,
+               avoid_high_crowds, accessibility_gdf, traffic_gdf, walkability_gdf, crowd_gdf):
     destination_coords = find_coordinates_of_place(destination)
+    source_coords = [4.899431, 52.379189]
+
+    avoid_something = avoid_low_accessibility or avoid_traffic or avoid_low_walkability or avoid_high_crowds
 
     folium.Marker(
-        destination_coords[::-1], popup=f"<i>{destination}</i>"
+        destination_coords[::-1], popup=f"<i>{destination}</i>",
+        icon=folium.Icon(color='green', prefix='fa', icon='location-dot')
     ).add_to(folium_map)
 
-    request_params = {'coordinates': [[4.899431, 52.379189],
+    folium.Marker(
+        source_coords[::-1], popup=f"<i>Starting point</i>",
+        icon=folium.Icon(color='blue', prefix='fa', icon='location-dot')
+    ).add_to(folium_map)
+
+    request_params = {'coordinates': [source_coords,
                                       destination_coords],
                       'format_out': 'geojson',
                       'profile': 'foot-walking',
@@ -52,8 +70,11 @@ def find_route(folium_map, destination, avoid_low_accessibility, avoid_traffic, 
 
     folium.GeoJson(data=route_normal,
                    name='Initial route',
-                   style_function=lambda feature: {'color': 'red'},
+                   style_function=lambda feature: {'color': 'red' if avoid_something else 'green'},
                    overlay=True).add_to(folium_map)
+
+    if not avoid_something:
+        return get_text_instructions(route_normal)
 
     route_buffer = LineString(route_normal['features'][0]['geometry']['coordinates']).buffer(0.00015)
     folium.GeoJson(data=geometry.mapping(route_buffer),
@@ -100,13 +121,7 @@ def find_route(folium_map, destination, avoid_low_accessibility, avoid_traffic, 
                    style_function=style_function('green'),
                    overlay=True).add_to(folium_map)
 
-    instructions = []
-    for feature in route_detour['features']:
-        for segment in feature['properties']['segments']:
-            for step in segment['steps']:
-                instructions.append(step['instruction'])
-
-    return instructions
+    return get_text_instructions(route_detour)
     # instructions = [feature['properties']['segments'] for feature in route_detour['features']]
 
     # print(route_detour)

@@ -41,7 +41,9 @@ def result():
         else:
             folium_map = create_map_with_features(False, False, False, False)
             try:
-                find_route(folium_map, destination, True, True, True, True, accessibility_gdf, traffic_gdf,
+                find_route(folium_map, destination, request.form.get('avoid_low_accessibility'),
+                           request.form.get('avoid_traffic'), request.form.get('avoid_low_walkability'),
+                           request.form.get('avoid_crowd'), accessibility_gdf, traffic_gdf,
                            walkability_gdf,
                            current_crowd_prediction_gdf)
             except KeyError:

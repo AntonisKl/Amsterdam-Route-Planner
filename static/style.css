@@ -1,9 +1,9 @@
 @import url('https://fonts.googleapis.com/css?family=Montserrat');
 
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 /* body {
@@ -12,69 +12,88 @@
   color: #fff;
 } */
 .container {
-  padding: 30px 30px;
+    padding: 30px 30px;
 }
+
 #search-form {
-  width: 30%;
-  /* top:55%; */
-  margin: 0 auto;
-  position: relative;
+    width: 30%;
+    /* top:55%; */
+    margin: 0 auto;
+    position: relative;
 }
+
 #search-form input {
-  width: 100%;
-  font-size: 2.0rem;
-  padding: 10px 15px;
-  border: 2px solid #ccc;
-  border-radius: 2px;
+    width: 100%;
+    font-size: 1.5rem;
+    padding: 10px 15px;
+    border: 2px solid #ccc;
+    border-radius: 2px;
 }
+
 #search-form button {
-  position: absolute;
-  top: 0;
-  right: 5;
-  bottom: 0;
-  background-color: transparent;
-  outline: none;
-  border: none;
-  width: 3rem;
-  text-align: center;
-  font-size: 1.75rem;
-  cursor: pointer;
-  color: #333;
+    position: absolute;
+    top: 0;
+    right: 5;
+    bottom: 0;
+    background-color: transparent;
+    outline: none;
+    border: none;
+    width: 3rem;
+    text-align: center;
+    font-size: 1.75rem;
+    cursor: pointer;
+    color: #333;
 }
+
 .info {
-  margin-top: 0.5rem;
-  text-align: center;
-  font-size: 0.75rem;
+    margin-top: 0.5rem;
+    text-align: center;
+    font-size: 0.75rem;
 }
 
 @media (max-width: 1200px) {
-  #search-form { width: 50%;
- }
+    #search-form {
+        width: 50%;
+    }
 }
 
 
 @media (max-width: 768px) {
-  .container { padding: 30px 35px; }
-  #search-form { width: 100%; }
-  .info { font-size: 0.5rem; }
+    .container {
+        padding: 30px 35px;
+    }
+
+    #search-form {
+        width: 100%;
+    }
+
+    .info {
+        font-size: 0.5rem;
+    }
 }
 
 @media (max-width: 480px) {
-  .container {
-    max-width: 220%;
+    .container {
+        max-width: 220%;
 
-  }
+    }
 }
 
 
-.btn-toolbar{
-position: absolute;
-top:15%;
-left:8%;
-/* width:100px;
-height:100px; */
-z-index: 2;
-/* background: orange; */
+.btn-toolbar {
+    position: fixed;
+    top: 15%;
+    left: 8%;
+    /* width:100px;
+    height:100px; */
+    z-index: 2;
+    /* background: orange; */
+}
+
+.btn-toolbar.title {
+    top: 13%;
+    font-weight: bold;
+    /* background: orange; */
 }
 
 /* @media (max-width: 480px) {

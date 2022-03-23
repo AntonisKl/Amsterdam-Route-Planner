@@ -25,7 +25,7 @@ def create_map_with_features(show_traffic=True, show_crowd=True, show_walkabilit
     base_map.add_to(m)
     # hi = str("hi")
     # colorscale = branca.colormap.linear.RdYlGn_04.scale(0, 3)
-    colorscale = branca.colormap.LinearColormap(colors=['green', 'yellow','darkorange','red'],index=[0,1,2,3], vmin=0, vmax=3,caption='LEAST LEVEL OF TRAFFIC, CROWD AND ACCESSIBILITY TO MOST')
+    colorscale = branca.colormap.LinearColormap(colors=['red', 'darkorange','yellow','green'],index=[0,1,2,3], vmin=0, vmax=3,caption='From worse traffic, crowd and accessibility conditions to best')
     colorscale.add_to(m)
 
     # colorscale = branca.colormap.linear.YlOrRd_09.scale(0, 3)
