@@ -25,9 +25,10 @@ def create_map_with_features(show_traffic=True, show_crowd=True, show_walkabilit
     base_map.add_to(m)
     # hi = str("hi")
     # colorscale = branca.colormap.linear.RdYlGn_04.scale(0, 3)
-    colorscale = branca.colormap.LinearColormap(colors=['red', 'darkorange','yellow','green'],index=[0,1,2,3], vmin=0, vmax=3,caption='From worse traffic, crowd and accessibility conditions to best')
+    colorscale = branca.colormap.LinearColormap(colors=['green', 'yellow', 'darkorange', 'red'],index=[0,1,2,3], vmin=0, vmax=3,caption='From best traffic, crowd and accessibility conditions to worse')
     colorscale.add_to(m)
-
+    colorscale2 = branca.colormap.LinearColormap(colors=['red','darkorange','yellow', 'green'],index=[0,1,2,3], vmin=0, vmax=3)
+    # colorscale2.add_to(m)
     # colorscale = branca.colormap.linear.YlOrRd_09.scale(0, 3)
     # colorscale = colorscale.to_step(index=[0, 1, 2, 3])
     # colorscale.caption = ''
@@ -43,11 +44,11 @@ def create_map_with_features(show_traffic=True, show_crowd=True, show_walkabilit
                    style_function=lambda feature: {'color': colorscale(feature['properties']['crowd_level'])},
                    show=show_crowd).add_to(m)
     folium.GeoJson(walkability_gdf, name="Walkability",
-                   style_function=lambda feature: {'color': colorscale(feature['properties']['walkability'])},
+                   style_function=lambda feature: {'color': colorscale2(feature['properties']['walkability'])},
                    show=show_walkability).add_to(
         m)
     folium.GeoJson(accessibility_gdf, name="Accessibility",
-                   style_function=lambda feature: {'color': colorscale(feature['properties']['score_0to3'])},
+                   style_function=lambda feature: {'color': colorscale2(feature['properties']['score_0to3'])},
                    show=show_accessibility).add_to(m)
 
     return m
