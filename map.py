@@ -37,16 +37,14 @@ def create_map_with_features(show_traffic=True, show_crowd=True, show_walkabilit
     # colorscale2 = branca.colormap.step.YlOrBr_05.scale(0, 3)
 
     folium.GeoJson(traffic_gdf, name="Traffic",
-                   style_function=lambda feature: {'color': colorscale(feature['properties']['vehicle_flow'])},
-                   show=show_traffic).add_to(
-        m)
+                   style_function=lambda feature: {'color': colorscale2(feature['properties']['vehicle_flow'])},
+                   show=show_traffic).add_to(m)
     folium.GeoJson(current_crowd_prediction_gdf, name="Crowd",
                    style_function=lambda feature: {'color': colorscale(feature['properties']['crowd_level'])},
                    show=show_crowd).add_to(m)
     folium.GeoJson(walkability_gdf, name="Walkability",
                    style_function=lambda feature: {'color': colorscale2(feature['properties']['walkability'])},
-                   show=show_walkability).add_to(
-        m)
+                   show=show_walkability).add_to(m)
     folium.GeoJson(accessibility_gdf, name="Accessibility",
                    style_function=lambda feature: {'color': colorscale2(feature['properties']['score_0to3'])},
                    show=show_accessibility).add_to(m)
