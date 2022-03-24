@@ -21,33 +21,39 @@
 </head>
 <body>
 <div class="container">
-    <form method="POST" id="search-form">
-        <input id="destination" name="destination" type="text" placeholder="Enter Destination" autocomplete="off"
-               autofocus
-               value="{{ request.form['destination'] }}">
-        <input type="button" class="btn btn-primary btn-lg" style="font-size:15px"
-               onclick="myFunction()" value="Submit">
+    <form method="POST" id="search-form" style="display: flex;justify-content: center">
+        <div style="margin-right: 1em">
+            <div class="btn-toolbar title" style="margin-left: 0.5em">Route options</div>
+            <div class="btn-toolbar" role="toolbar" aria-label="Basic checkbox toggle button group">
+                <div class="btn-group">
+                    <input type="checkbox" class="btn-check" id="button_avoid_traffic" autocomplete="off"
+                           name="avoid_traffic">
+                    <label class="btn btn-outline-dark" for="button_avoid_traffic">Avoid
+                        Traffic</label>
 
+                    <input type="checkbox" class="btn-check" id="button_avoid_crowd" autocomplete="off"
+                           name="avoid_crowd">
+                    <label class="btn btn-outline-dark" for="button_avoid_crowd">Avoid
+                        Crowds</label>
 
-        <div class="btn-toolbar title" style="margin-left: 0.5em">Route options</div>
-        <div class="btn-toolbar" role="group" aria-label="Basic checkbox toggle button group">
-            <input type="checkbox" class="btn-check" id="button_avoid_traffic" autocomplete="off"
-                   name="avoid_traffic">
-            <label class="btn btn-outline-dark" for="button_avoid_traffic" style="margin: 0.5em">Avoid Traffic</label>
+                    <input type="checkbox" class="btn-check" id="button_avoid_low_walkability" autocomplete="off"
+                           name="avoid_low_walkability">
+                    <label class="btn btn-outline-dark" for="button_avoid_low_walkability"
+                    >Walkability</label>
 
-            <input type="checkbox" class="btn-check" id="button_avoid_crowd" autocomplete="off"
-                   name="avoid_crowd">
-            <label class="btn btn-outline-dark" for="button_avoid_crowd" style="margin: 0.5em">Avoid Crowds</label>
-
-            <input type="checkbox" class="btn-check" id="button_avoid_low_walkability" autocomplete="off"
-                   name="avoid_low_walkability">
-            <label class="btn btn-outline-dark" for="button_avoid_low_walkability"
-                   style="margin: 0.5em">Walkability</label>
-
-            <input type="checkbox" class="btn-check" id="button_avoid_low_accessibility" autocomplete="off"
-                   name="avoid_low_accessibility">
-            <label class="btn btn-outline-dark" for="button_avoid_low_accessibility" style="margin: 0.5em">Wheelchair
-                Access</label>
+                    <input type="checkbox" class="btn-check" id="button_avoid_low_accessibility" autocomplete="off"
+                           name="avoid_low_accessibility">
+                    <label class="btn btn-outline-dark" for="button_avoid_low_accessibility">Wheelchair
+                        Access</label>
+                </div>
+            </div>
+        </div>
+        <div style="align-self: center">
+            <input id="destination" name="destination" type="text" placeholder="Enter Destination" autocomplete="off"
+                   autofocus
+                   value="{{ request.form['destination'] }}">
+            <input type="button" class="btn btn-primary btn-lg" style="font-size:15px"
+                   onclick="myFunction()" value="Submit">
         </div>
 
     </form>

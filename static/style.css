@@ -16,7 +16,7 @@
 }
 
 #search-form {
-    width: 30%;
+    width: 100%;
     /* top:55%; */
     margin: 0 auto;
     position: relative;
@@ -31,7 +31,8 @@
 }
 
 #search-form button {
-    position: absolute;
+    /*position: absolute;*/
+    margin-left: 1em;
     top: 0;
     right: 5;
     bottom: 0;
@@ -53,7 +54,7 @@
 
 @media (max-width: 1200px) {
     #search-form {
-        width: 50%;
+        width: 100%;
     }
 }
 
@@ -81,9 +82,9 @@
 
 
 .btn-toolbar {
-    position: fixed;
-    top: 18%;
-    left: 1%;
+    /*position: fixed;*/
+    /*top: 18%;*/
+    /*left: 1%;*/
     /* width:100px;
     height:100px; */
     z-index: 2;
@@ -91,7 +92,7 @@
 }
 
 .btn-toolbar.title {
-    top: 13%;
+    /*top: 13%;*/
     font-weight: bold;
     /* background: orange; */
 }

@@ -38,6 +38,7 @@ def result():
 
         if not destination:
             flash('Destination is required.')
+            return render_template('index.html', map=create_map_with_features()._repr_html_())
         else:
             folium_map = create_map_with_features(False, False, False, False)
             try:
