@@ -1,6 +1,6 @@
 
 const searchForm = document.querySelector("#search-form");
-const searchFormInput = searchForm.querySelector("input"); // <=> document.querySelector("#search-form input");
+const searchFormInput = searchForm.querySelector("#destination"); // <=> document.querySelector("#search-form input");
 const info = document.querySelector(".info");
 
 function myFunction() {
